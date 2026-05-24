@@ -50,45 +50,53 @@ export function ModuleCard({
   return (
     <Link href={path} className="group block">
       <div
-        className={`relative rounded-2xl border-2 ${c.border} ${c.bg} p-4 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 active:scale-98`}
+        className={`relative rounded-2xl border-2 ${c.border} ${c.bg} p-4 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 active:scale-98 flex gap-4`}
       >
-        <div className="flex items-start justify-between mb-2">
-          <div className={`p-2 rounded-xl ${c.iconBg}`}>
-            {Icon && <Icon size={20} className={c.iconColor} />}
+        <div className="flex-1">
+          <h3 className="text-base font-semibold text-slate-900 mb-0.5">
+            {title}
+          </h3>
+          <p className="text-xs text-slate-500 mb-2">{subtitle}</p>
+
+          <div className="flex flex-wrap gap-1">
+            <span
+              className={`text-xs font-medium px-2 py-0.5 rounded-full ${c.badge}`}
+            >
+              {sdgTarget}
+            </span>
           </div>
-          <ArrowRight
-            size={16}
-            className={`transition-transform group-hover:translate-x-1 ${c.arrow}`}
-          />
         </div>
 
-        <h3 className="text-base font-semibold text-slate-900 mb-0.5">
-          {title}
-        </h3>
-        <p className="text-xs text-slate-500 mb-2">{subtitle}</p>
-
-        <div className="flex flex-wrap gap-1">
-          <span
-            className={`text-xs font-medium px-2 py-0.5 rounded-full ${c.badge}`}
-          >
-            {sdgTarget}
-          </span>
-        </div>
-
-        {stats && (
-          <div className="mt-2 pt-2 border-t border-slate-100 flex gap-4">
-            <div>
-              <p className="text-lg font-bold text-slate-900">{stats.total}</p>
-              <p className="text-xs text-slate-400">Total</p>
+        <div className="flex flex-col justify-between items-end gap-4">
+          <div className="flex items-center justify-end gap-2">
+            <div className={`p-2 rounded-xl ${c.iconBg}`}>
+              {Icon && <Icon size={20} className={c.iconColor} />}
             </div>
-            {stats.urgent > 0 && (
-              <div>
-                <p className="text-lg font-bold text-red-600">{stats.urgent}</p>
-                <p className="text-xs text-slate-400">Urgent</p>
-              </div>
-            )}
+            <ArrowRight
+              size={16}
+              className={`transition-transform group-hover:translate-x-1 ${c.arrow}`}
+            />
           </div>
-        )}
+
+          {stats && (
+            <div className="flex gap-4 items-center justify-end">
+              <div className="text-right">
+                <p className="text-lg font-bold text-slate-900">
+                  {stats.total}
+                </p>
+                <p className="text-xs text-slate-400">Total</p>
+              </div>
+              {stats.urgent > 0 && (
+                <div className="text-right">
+                  <p className="text-lg font-bold text-red-600">
+                    {stats.urgent}
+                  </p>
+                  <p className="text-xs text-slate-400">Urgent</p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </Link>
   );
