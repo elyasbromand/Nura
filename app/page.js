@@ -98,7 +98,6 @@ export default function DashboardPage() {
           path="/neonatal"
           colorScheme="blue"
           icon={Baby}
-          stats={stats.total > 0 ? stats : null}
         />
         <ModuleCard
           title="Maternal triage"
