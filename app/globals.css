@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+button {
+  min-height: 44px;
+  cursor: pointer;
+}
